@@ -1,0 +1,61 @@
+{
+    "name": "chuckbe/dokapi-laravel-sdk",
+    "description": "A Laravel package to consume the Dokapi API.",
+    "keywords": ["laravel", "peppol", "dokapi", "php", "sdk"],
+    "homepage": "https://github.com/chuckbe/dokapi-laravel-sdk",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Karel Brijs",
+            "email": "karel@chuck.be",
+            "homepage": "https://chuck.be",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-openssl": "*",
+        "composer/ca-bundle": "^1.2",
+        "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "dev-master",
+        "guzzlehttp/guzzle": "^6.3 || ^7.0",
+        "larastan/larastan": "^3.0",
+        "phpro/grumphp-shim": "v2.x-dev",
+        "php-parallel-lint/php-parallel-lint": "dev-develop",
+        "phpunit/phpunit": "11.5.x-dev",
+        "dg/bypass-finals": "dev-master",
+        "phpspec/prophecy-phpunit": "^2.0@dev",
+        "phpunit/php-code-coverage": "11.0.x-dev",
+        "orchestra/testbench": "9.x-dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dokapi\\": "src/"
+        }
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "vendor/bin/grumphp git:init"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dokapi\\DokapiServiceProvider"
+            ],
+            "aliases": {
+                "Dokapi": "Dokapi\\Facades\\Dokapi"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "config": {
+        "allow-plugins": {
+            "phpro/grumphp-shim": true
+        }
+    }
+}
