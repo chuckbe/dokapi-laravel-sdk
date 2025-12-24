@@ -102,7 +102,21 @@ final class ParticipantRegistrationEndpoint extends CollectionEndpointAbstract
      */
     public function create(array $data = [], array $filters = []): BaseResource
     {
-        return $this->restCreate($data, $filters);
+        $result = $this->client->performHttpCall(
+            self::REST_CREATE,
+            $this->getResourcePath().$this->buildQueryString($filters),
+            $this->parseRequestBody($body)
+        );
+
+        if (isset($result->participantRegistration) && is_object($result->participantRegistration)) {
+            foreach (get_object_vars($result->participantRegistration) as $key => $value) {
+                $result->{$key} = $value;
+            }
+
+            unset($result->participantRegistration);
+        }
+
+        return ResourceFactory::createFromApiResult($result, $this->getResourceObject());
     }
 
     /**
