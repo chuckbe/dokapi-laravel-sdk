@@ -105,7 +105,7 @@ final class ParticipantRegistrationEndpoint extends CollectionEndpointAbstract
         $result = $this->client->performHttpCall(
             self::REST_CREATE,
             $this->getResourcePath().$this->buildQueryString($filters),
-            $this->parseRequestBody($body)
+            $this->parseRequestBody($data)
         );
 
         if (isset($result->participantRegistration) && is_object($result->participantRegistration)) {
