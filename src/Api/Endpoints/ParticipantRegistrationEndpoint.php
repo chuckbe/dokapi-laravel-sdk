@@ -194,4 +194,27 @@ final class ParticipantRegistrationEndpoint extends CollectionEndpointAbstract
 
         return ResourceFactory::createFromApiResult($result, new Status($this->client));
     }
+
+    /**
+     * This call pushes the business card information to the Peppol Directory.
+     *
+     * @throws ApiException
+     */
+    public function pushBusinessCard(string $value, ?string $scheme = null): BaseResource
+    {
+        if (null !== $scheme) {
+            $data['scheme'] = $scheme;
+        }
+
+        $data['value'] = $value;
+
+        $result = $this->client->performHttpCall(
+            self::REST_POST,
+            $this->getResourcePath().'/business-cards/push',
+            $this->parseRequestBody($data),
+            true,
+        );
+
+        return ResourceFactory::createFromApiResult($result, new Status($this->client));
+    }
 }

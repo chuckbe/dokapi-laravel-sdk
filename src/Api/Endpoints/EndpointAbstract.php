@@ -13,6 +13,7 @@ abstract class EndpointAbstract
 {
     public const REST_CREATE = DokapiApiClient::HTTP_POST;
     public const REST_UPDATE = DokapiApiClient::HTTP_PATCH;
+    public const REST_POST = DokapiApiClient::HTTP_POST;
     public const REST_PUT = DokapiApiClient::HTTP_PUT;
     public const REST_READ = DokapiApiClient::HTTP_GET;
     public const REST_LIST = DokapiApiClient::HTTP_GET;
