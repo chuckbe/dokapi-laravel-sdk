@@ -37,6 +37,11 @@
             "Dokapi\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Dokapi\\Tests\\": "tests/"
+        }
+    },
     "scripts": {
         "post-update-cmd": [
             "vendor/bin/grumphp git:init"
