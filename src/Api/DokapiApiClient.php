@@ -170,7 +170,13 @@ final class DokapiApiClient
             return $this->getAccessTokenFromApi();
         }
 
-        return $this->refreshAccessToken($refreshToken);
+        try {
+            return $this->refreshAccessToken($refreshToken);
+        } catch (ApiException $exception) {
+            cache()->forget($this->refreshTokenCacheKey);
+
+            return $this->getAccessTokenFromApi();
+        }
     }
 
     private function setAccessToken(): void
@@ -222,6 +228,12 @@ final class DokapiApiClient
         ]);
 
         $response = $this->httpClient->send($httpMethod, $url, $headers, $httpBody);
+
+        $rotatedRefreshToken = $response->refresh_token ?? null;
+        if (null !== $rotatedRefreshToken) {
+            cache()->forget($this->refreshTokenCacheKey);
+            cache()->forever($this->refreshTokenCacheKey, $rotatedRefreshToken);
+        }
 
         return $response->access_token;
     }
