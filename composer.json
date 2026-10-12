@@ -17,20 +17,22 @@
         "ext-curl": "*",
         "ext-json": "*",
         "ext-openssl": "*",
+        "ext-dom": "*",
+        "ext-xml": "*",
+        "ext-xmlwriter": "*",
         "composer/ca-bundle": "^1.2",
-        "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0"
+        "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0|^13.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "dev-master",
+        "friendsofphp/php-cs-fixer": "^3.0",
         "guzzlehttp/guzzle": "^6.3 || ^7.0",
         "larastan/larastan": "^3.0",
-        "phpro/grumphp-shim": "v2.x-dev",
-        "php-parallel-lint/php-parallel-lint": "dev-develop",
-        "phpunit/phpunit": "11.5.x-dev",
-        "dg/bypass-finals": "dev-master",
-        "phpspec/prophecy-phpunit": "^2.0@dev",
-        "phpunit/php-code-coverage": "11.0.x-dev",
-        "orchestra/testbench": "9.x-dev"
+        "phpro/grumphp-shim": "v2.0",
+        "php-parallel-lint/php-parallel-lint": "^1.0",
+        "phpunit/phpunit": "^11.5",
+        "dg/bypass-finals": "^1.11",
+        "phpspec/prophecy-phpunit": "^2.0",
+        "orchestra/testbench": "^9.0|^10.0|^11.0"
     },
     "autoload": {
         "psr-4": {
