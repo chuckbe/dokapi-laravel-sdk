@@ -12,11 +12,15 @@ final class ResourceFactory
 {
     /**
      * Create resource object from Api result.
+     *
+     * An empty (null) nested field stays null: the typed builder methods only accept the
+     * object or array Dokapi sends when the field is present (e.g. a lookup without a
+     * business card, which is optional in Peppol).
      */
     public static function createFromApiResult(object $apiResult, BaseResource $resource): BaseResource
     {
         foreach ($apiResult as $property => $value) {
-            if (method_exists($resource, $property)) {
+            if (null !== $value && method_exists($resource, $property)) {
                 $resource->{$property} = $resource->{$property}($value);
 
                 continue;
